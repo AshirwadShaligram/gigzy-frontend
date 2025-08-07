@@ -1,6 +1,6 @@
 "use client";
 
-import FeaturedGigs from "@/components/layout/featuredGigs";
+import FeaturedGigs from "@/components/layout/FeaturedGigs";
 import Hero from "@/components/layout/Hero";
 import Navbar from "@/components/layout/Navbar";
 import React from "react";
