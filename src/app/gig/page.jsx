@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -15,13 +16,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, X, SlidersHorizontal, Grid, List } from "lucide-react";
+import { Search, X, SlidersHorizontal, Grid, List } from "lucide-react";
 import api from "@/axios/axiosInstance";
 
-const AllGigPage = () => {
+const AllGigPageContent = () => {
   const searchParams = useSearchParams();
   const [gigs, setGigs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -512,6 +512,14 @@ const AllGigPage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const AllGigPage = () => {
+  return (
+    <Suspense fallback={<div>Loading filters</div>}>
+      <AllGigPageContent />
+    </Suspense>
   );
 };
 
